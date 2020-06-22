@@ -1,10 +1,10 @@
 <?php
 
 
-namespace app\common\exceptions;
+namespace app\exceptions;
 
 
-use think\Exception;
+use Exception;
 
 /**
  * 这种异常表明是已知的，可以展示给客户端看的

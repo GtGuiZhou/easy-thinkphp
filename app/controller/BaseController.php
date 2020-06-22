@@ -1,7 +1,7 @@
 <?php
 declare (strict_types = 1);
 
-namespace app;
+namespace app\controller;
 
 use app\exceptions\CheckException;
 use app\exceptions\InternalException;

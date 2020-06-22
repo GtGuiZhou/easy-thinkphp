@@ -1,7 +1,7 @@
 <?php
 
 
-namespace app\user\controller;
+namespace app\controller;
 
 use app\BaseController;
 use app\common\model\MemberTokenModel;

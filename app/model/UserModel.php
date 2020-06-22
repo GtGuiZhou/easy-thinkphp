@@ -18,6 +18,8 @@ namespace app\common\model;
  * @property int $is_locked 锁定账号
  * @property string $nickname 昵称
  * @property string $avatar 头像
+ * @property string $token 登陆标识
+ * @property string $login_time 登陆时间
  */
 class UserModel extends MemberModel
 {

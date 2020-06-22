@@ -1,19 +1,20 @@
 <?php
 
 
-namespace app\user\controller;
+namespace app\controller\user;
 
 
 
-use app\common\exceptions\CheckException;
 use app\common\model\MemberTokenModel;
 use app\common\model\UserModel;
+use app\controller\UserController;
+use app\exceptions\CheckException;
 
 class Home extends UserController
 {
     public function loginByPhone(string $phone,string $password)
     {
-        $user = UserModel::getByPhone($phone);
+        $user = UserModel::where("phone",$phone)->find();
         if (!$user)
             throw new CheckException('用户不存在');
 
@@ -21,6 +22,9 @@ class Home extends UserController
             throw new CheckException('密码错误');
         }
 
+        $user->token =
+
+re
         return MemberTokenModel::generateToken($user->id,$this->memberChannel);
     }
 
