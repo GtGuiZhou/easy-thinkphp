@@ -21,7 +21,8 @@ use think\Model;
  * @property string $avatar
  * @property string $token 登录token
  * @property string $login_time 登录时间
- * @property-read mixed $all_auth_rule
+ * @property-read \app\model\AdminRoleRuleModel[] $auth_rule 管理员规则
+ * @property-read \app\model\AdminRoleModel[] $roles
  */
 class AdminModel extends BaseModel
 {
@@ -56,22 +57,23 @@ class AdminModel extends BaseModel
         return self::getById($admin);
     }
 
-    public function rule()
+    public function roles()
     {
-
+        return $this->belongsToMany(AdminRoleModel::class,'admin_role_mid','admin_id','id');
     }
 
-    public function adminRole()
-    {
-//        return $this->hasMany()
-    }
-
-    public function getAllAuthRuleAttr()
+    public function getAuthRuleAttr()
     {
         // 超级管理员
         if ($this->root){
             return '*';
         }
 
+        $rules = [];
+        foreach ($this->roles()->select() as $role){
+            $rules[] = $role->rules;
+        }
+
+        return  $rules;
     }
 }

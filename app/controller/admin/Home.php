@@ -28,7 +28,7 @@ class Home extends AdminController
 
     public function test(Request $request)
     {
-        $route = $request->route();
+        $route = $request->baseUrl();
         return $route;
     }
 }

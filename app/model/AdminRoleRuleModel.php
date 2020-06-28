@@ -11,6 +11,8 @@ use think\Model;
  * @mixin think\Model
  * @property int $role_id
  * @property string $rule
+ * @property int $id
+ * @property string $name 规则名称
  */
 class AdminRoleRuleModel extends BaseModel
 {
