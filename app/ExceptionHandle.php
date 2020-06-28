@@ -18,6 +18,7 @@ use Throwable;
  */
 class ExceptionHandle extends Handle
 {
+    public static $HasException = false;
     /**
      * 不需要记录信息（日志）的异常类列表
      * @var array
@@ -63,6 +64,7 @@ class ExceptionHandle extends Handle
 //            return json($e->getError(), 422);
 //        }
 
+        self::$HasException = true;
         if ($e instanceof ModelNotFoundException){
             return output_warp(null,'访问数据不存在',400);
         }

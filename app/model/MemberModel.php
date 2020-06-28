@@ -27,9 +27,6 @@ abstract class MemberModel extends BaseModel
         return MemberTokenModel::getMemberEffectiveToken($this->getPkValue());
     }
 
-    public static function generateEncryptPassword($password)
-    {
-        return md5($password);
-    }
+
 
 }

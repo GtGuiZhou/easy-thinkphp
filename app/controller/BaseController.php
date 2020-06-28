@@ -5,11 +5,6 @@ namespace app\controller;
 
 use app\exceptions\CheckException;
 use app\exceptions\InternalException;
-use model\AdminModel;
-use model\BaseModel;
-use model\MemberModel;
-use model\MemberTokenModel;
-use model\UserModel;
 use think\App;
 use think\exception\ValidateException;
 use think\Validate;
@@ -19,18 +14,7 @@ use think\Validate;
  */
 abstract class BaseController
 {
-    /**
-     * 当前登陆用户模型
-     * @author gt
-     * @var MemberModel
-     */
-    private $member;
 
-    /**
-     * 当前用户登陆的通道，用于区分admin和user
-     * @var null
-     */
-    protected $memberChannel = null;
 
     /**
      * Request实例

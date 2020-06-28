@@ -5,14 +5,13 @@ namespace app\controller\user;
 
 
 
-use app\common\model\MemberTokenModel;
-use app\common\model\UserModel;
 use app\controller\UserController;
 use app\exceptions\CheckException;
+use app\model\UserModel;
 
 class Home extends UserController
 {
-    public function loginByPhone(string $phone,string $password)
+    public function loginPhone(string $phone,string $password)
     {
         $user = UserModel::where("phone",$phone)->find();
         if (!$user)
@@ -22,10 +21,9 @@ class Home extends UserController
             throw new CheckException('密码错误');
         }
 
-        $user->token =
-
-re
-        return MemberTokenModel::generateToken($user->id,$this->memberChannel);
+        return UserModel::login($user);
     }
+
+
 
 }

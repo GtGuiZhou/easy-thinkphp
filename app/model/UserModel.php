@@ -1,10 +1,14 @@
 <?php
 
 
-namespace app\common\model;
+namespace app\model;
 
 
 
+
+
+use app\consts\SessionConst;
+use think\facade\Session;
 
 /**
  * Class UserModel
@@ -21,7 +25,7 @@ namespace app\common\model;
  * @property string $token 登陆标识
  * @property string $login_time 登陆时间
  */
-class UserModel extends MemberModel
+class UserModel extends BaseModel
 {
     protected $table = 'user';
 
@@ -29,4 +33,29 @@ class UserModel extends MemberModel
     {
         // TODO: Implement filedRules() method.
     }
+
+
+    public static function generateEncryptPassword($password)
+    {
+        return md5($password);
+    }
+
+    public static function login(UserModel $user)
+    {
+        // 保存用户登录信息
+        $user->login_time = date('Y-m-d H:i:s');
+        $user->save();
+        Session::set(SessionConst::USER_ID,$user->id);
+        return $user;
+    }
+
+    public static function getSessionUser()
+    {
+        $userId = Session::get(SessionConst::USER_ID,false);
+        if (!$userId || ! is_int($userId) || $userId < 1){
+            return null;
+        }
+        return self::getById($userId);
+    }
+
 }
