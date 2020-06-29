@@ -14,6 +14,5 @@ Route::group('',function (){
     Route::group('admin',function (){
         Route::get('test','admin.home/test');
     });
-
-})->middleware(\app\middleware\AdminResponseHandle::class);
+});
 

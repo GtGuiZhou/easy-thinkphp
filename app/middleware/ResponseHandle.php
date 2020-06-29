@@ -3,9 +3,10 @@ declare (strict_types = 1);
 
 namespace app\middleware;
 
+use app\ExceptionHandle;
 use think\Response;
 
-class UserResponseHandle
+class ResponseHandle
 {
     /**
      * 处理请求
@@ -17,11 +18,14 @@ class UserResponseHandle
     public function handle($request, \Closure $next)
     {
         $response = $next($request);
-
         // 强制格式为json格式
-        return json([
-            'data' => $response->getData(),
-            'time' => time()
-        ]);
+        if (get_class($response) == Response::class){
+            return json([
+                'data' => $response->getData(),
+                'time' => time()
+            ]);
+        } else {
+            return $response;
+        }
     }
 }

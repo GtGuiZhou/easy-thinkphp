@@ -7,7 +7,7 @@ namespace app\controller;
 use app\consts\HttpCodeConst;
 use app\exceptions\CheckException;
 use app\middleware\AdminAuth;
-use app\middleware\AdminResponseHandle;
+use app\middleware\ResponseHandle;
 use app\model\AdminModel;
 
 abstract class AdminController extends BaseController

@@ -25,5 +25,16 @@ class Home extends UserController
     }
 
 
+    
+    public function loginWechatWeb()
+    {
+        
+    }
+
+    public function loginWechatMiniProgram()
+    {
+        
+    }
+
 
 }

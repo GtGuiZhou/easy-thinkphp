@@ -15,7 +15,6 @@ use think\facade\Cache;
 
 class Home extends AdminController
 {
-    protected static $noNeedAuth = ['loginUsername'];
 
     public function loginUsername(string $username, string $password)
     {
@@ -29,9 +28,6 @@ class Home extends AdminController
 
         return AdminModel::login($admin);
     }
-
-
-
 
     public function wechatLoginCallback(string $token)
     {

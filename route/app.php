@@ -11,3 +11,5 @@
 use think\facade\Route;
 
 Route::any('wechat-server-validate','common/wechatServerValidate');
+Route::post('file-upload','common/fileUpload');
+Route::get('file/:md5','common/fileRead');
