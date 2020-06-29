@@ -4,10 +4,14 @@
 namespace app\controller\admin;
 
 
+use app\consts\CacheConst;
+use app\consts\WechatConst;
 use app\model\AdminModel;
 use app\controller\AdminController;
 use app\exceptions\CheckException;
 use app\Request;
+use EasyWeChat\Factory;
+use think\facade\Cache;
 
 class Home extends AdminController
 {
@@ -26,9 +30,27 @@ class Home extends AdminController
         return AdminModel::login($admin);
     }
 
+
+
+
+    public function wechatLoginCallback(string $token)
+    {
+        $openId = $this->wechatOfficial()->oauth->user()->getId();
+        $config = CacheConst::adminWechatLoginToken($token);
+        Cache::set($config->getKey(),$openId,$config->getExpire());
+        return 'success';
+    }
+
+
     public function test(Request $request)
     {
         $route = $request->baseUrl();
         return $route;
+    }
+
+
+    private function wechatOfficial()
+    {
+        return Factory::officialAccount(WechatConst::officialConfig());
     }
 }
