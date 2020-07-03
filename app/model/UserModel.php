@@ -24,6 +24,8 @@ use think\facade\Session;
  * @property string $avatar 头像
  * @property string $token 登陆标识
  * @property string $login_time 登陆时间
+ * @property string $official_open_id 微信公众号openid
+ * @property string $mini_open_id 小程序openid
  */
 class UserModel extends BaseModel
 {
@@ -43,7 +45,7 @@ class UserModel extends BaseModel
     public static function login(UserModel $user)
     {
         // 保存用户登录信息
-        $user->login_time = date('Y-m-d H:i:s');
+        $user->login_time = default_date();
         $user->save();
         Session::set(SessionConst::USER_ID,$user->id);
         return $user;

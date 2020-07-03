@@ -3,8 +3,10 @@ declare (strict_types = 1);
 
 namespace app\controller;
 
+use app\consts\WechatConst;
 use app\exceptions\CheckException;
 use app\exceptions\InternalException;
+use EasyWeChat\Factory;
 use think\App;
 use think\exception\ValidateException;
 use think\Validate;
@@ -149,6 +151,23 @@ abstract class BaseController
     }
 
 
+    /**
+     * 微信公众号
+     * @author gt
+     * @return \EasyWeChat\OfficialAccount\Application
+     */
+    protected function wechatOfficial()
+    {
+        return Factory::officialAccount(WechatConst::officialConfig());
+    }
 
+    /**
+     * 微信小程序
+     * @author gt
+     * @return \EasyWeChat\MiniProgram\Application
+     */
+    protected function wechatMiniProgram(){
+        return Factory::miniProgram(WechatConst::miniProgram());
+    }
 
 }

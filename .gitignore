@@ -4,3 +4,4 @@
 *.log
 .env
 test.php
+.user.ini

@@ -10,4 +10,9 @@ class WechatConst
     {
         return config('wechat.official');
     }
+
+    public static function miniProgram()
+    {
+        return config('wechat.mini_program');
+    }
 }
