@@ -1,5 +1,5 @@
 <?php
-declare (strict_types = 1);
+declare (strict_types=1);
 
 namespace app\middleware;
 
@@ -12,20 +12,14 @@ class ResponseHandle
      * 处理请求
      *
      * @param \think\Request $request
-     * @param \Closure       $next
+     * @param \Closure $next
      * @return Response
      */
     public function handle($request, \Closure $next)
     {
         $response = $next($request);
-        // 强制格式为json格式
-        if (get_class($response) == Response::class){
-            return json([
-                'data' => $response->getData(),
-                'time' => time()
-            ]);
-        } else {
-            return $response;
-        }
+
+        return $response;
+
     }
 }
