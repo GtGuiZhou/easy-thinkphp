@@ -8,5 +8,5 @@ return [
     // Session初始化
     // \think\middleware\SessionInit::class
     // 响应处理
-    \app\middleware\ResponseHandle::class
+//    \app\middleware\ResponseHandle::class
 ];

@@ -45,8 +45,8 @@ class Home extends AdminController
     }
 
 
-    private function wechatOfficial()
-    {
-        return Factory::officialAccount(WechatConst::officialConfig());
-    }
+//    private function wechatOfficial()
+//    {
+//        return Factory::officialAccount(WechatConst::officialConfig());
+//    }
 }
